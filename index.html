@@ -10,70 +10,68 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: url('https://source.unsplash.com/1600x900/?romantic,couple,flowers') no-repeat center center/cover;
             flex-direction: column;
+            background: url('https://source.unsplash.com/1600x900/?romantic,couple') no-repeat center center/cover;
             font-family: Arial, sans-serif;
-            text-align: center;
             color: white;
-            font-size: 24px;
+            text-align: center;
         }
-        .container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 15px;
+        h1 {
+            font-size: 2rem;
+        }
+        .buttons {
+            margin-top: 20px;
         }
         button {
-            font-size: 20px;
             padding: 10px 20px;
+            font-size: 1rem;
             margin: 10px;
-            border: none;
             cursor: pointer;
+            border: none;
             border-radius: 10px;
         }
         #yes {
-            background: #ff4d79;
+            background-color: #ff4d6d;
             color: white;
+            transition: all 0.3s ease;
         }
         #no {
-            background: #333;
+            background-color: #555;
             color: white;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <p id="question">Will you be my Valentine? 🥰</p>
+    <h1>Will you be my Valentine? ❤️</h1>
+    <div class="buttons">
         <button id="yes" onclick="sayYes()">Yes</button>
         <button id="no" onclick="sayNo()">No</button>
     </div>
-
     <script>
-        let noClicks = 0;
+        let noClickCount = 0;
         function sayNo() {
-            noClicks++;
-            const noButton = document.getElementById("no");
-            const yesButton = document.getElementById("yes");
-            const question = document.getElementById("question");
+            noClickCount++;
+            let noButton = document.getElementById("no");
+            let yesButton = document.getElementById("yes");
             
-            if (noClicks === 1) {
-                question.innerText = "If u say no again, no dogs bae";
-            } else if (noClicks === 2) {
-                question.innerText = "Baee cmonn, iluvvyouuu🥺";
-            } else if (noClicks === 3) {
-                question.innerText = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
-            } else if (noClicks === 4) {
-                question.innerText = "Im gon bomb ur wedding if u aint tryna be mine😡💣";
+            if (noClickCount === 1) {
+                alert("If u say no again, no dogs bae");
+            } else if (noClickCount === 2) {
+                alert("Baee cmonn, iluvvyouuu🥺");
+            } else if (noClickCount === 3) {
+                alert("For Daksh and Reeyan bae cmonn🥺🙏🏽");
+            } else if (noClickCount === 4) {
+                alert("Im gon bomb ur wedding if u aint tryna be mine😡💣");
+            } else if (noClickCount === 5) {
+                alert("Dont do this to me bae😭😔....");
                 noButton.innerText = "Fine";
-            } else if (noClicks === 5) {
-                question.innerText = "Dont do this to me bae😭😔....";
-                noButton.style.display = "none";
             }
             
-            yesButton.style.fontSize = (20 + noClicks * 5) + "px"; 
+            yesButton.style.fontSize = `${1 + noClickCount * 0.5}rem`;
         }
-        
+
         function sayYes() {
-            document.querySelector(".container").innerHTML = `<p>YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to Daksh and Reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. I'll even make sure to put your needs first, and yes, we'll get us your fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳</p>`;
+            alert("YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses your old money house and i promise to read books with you late at night and make you your cravings if your craving anything in the middle of the night, ill even make sure to put your needs first, and yes we'll get us ur fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳");
         }
     </script>
 </body>
