@@ -1,120 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Valentine's Day Question</title>
-  <style>
-    body {
-      background: linear-gradient(to right, #ff7e5f, #feb47b);
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      color: white;
-      padding: 50px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      flex-direction: column;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Question</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
 
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
+        .response {
+            margin-top: 30px;
+            font-size: 24px;
+            font-weight: bold;
+        }
 
-    .message {
-      font-size: 1.2rem;
-      margin: 20px;
-      text-align: center;
-    }
+        .button {
+            background-color: #ff6f61;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            border-radius: 10px;
+        }
 
-    .button {
-      padding: 15px 30px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      margin: 10px;
-      background-color: #ff6b81;
-      border: none;
-      border-radius: 25px;
-      color: white;
-      transition: all 0.3s ease;
-    }
+        .button:hover {
+            background-color: #d65a50;
+        }
 
-    .button:hover {
-      background-color: #ff4d63;
-    }
+        .yes-btn {
+            width: 200px;
+        }
 
-    .yes-button {
-      transition: all 0.3s ease;
-    }
+        .yes-btn:active {
+            transform: scale(1.1);
+        }
 
-    .no-button {
-      transition: all 0.3s ease;
-    }
-  </style>
+        .no-btn {
+            width: 150px;
+        }
+
+        .no-btn:active {
+            transform: scale(1.1);
+        }
+
+        .yes-btn.large {
+            width: 250px;
+        }
+    </style>
 </head>
 <body>
+    <h1>Will you be my Valentine?</h1>
+    <button class="button yes-btn" id="yes-btn">Yes</button>
+    <button class="button no-btn" id="no-btn">No</button>
+    <div class="response" id="response-text"></div>
 
-<h1>Will you be my Valentine?</h1>
+    <script>
+        let noClicks = 0;
+        let yesBtn = document.getElementById('yes-btn');
+        let noBtn = document.getElementById('no-btn');
+        let responseText = document.getElementById('response-text');
 
-<div class="message" id="message">
-  If you say no again, no dogs bae
-</div>
+        yesBtn.addEventListener('click', () => {
+            responseText.innerHTML = "YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses your old money house and i promise to read books with you late at night and make you your cravings if your craving anything in the middle of the night, ill even make sure to put your needs first, and yes we'll get us ur fav dogs aswell. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳";
+            resetButtons();
+        });
 
-<button class="button no-button" id="noBtn">No</button>
-<button class="button yes-button" id="yesBtn">Yes</button>
+        noBtn.addEventListener('click', () => {
+            noClicks++;
 
-<script>
-  let clickCount = 0;
-  const noBtn = document.getElementById('noBtn');
-  const yesBtn = document.getElementById('yesBtn');
-  const messageDiv = document.getElementById('message');
+            if (noClicks === 1) {
+                responseText.innerHTML = "If u say no again no dogs bae";
+            } else if (noClicks === 2) {
+                responseText.innerHTML = "Baee cmonn, iluvvyouuu🥺";
+            } else if (noClicks === 3) {
+                responseText.innerHTML = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
+            } else if (noClicks === 4) {
+                responseText.innerHTML = "Im gon bomb ur wedding if u aint tryna be mine😡💣";
+                noBtn.innerHTML = "Fine";
+            } else {
+                responseText.innerHTML = "Dont do this to me bae😭😔....";
+                noBtn.style.display = 'none'; // Hide the "No" button after 5 clicks
+                yesBtn.innerHTML = "Yes, ill be your valentines";
+            }
 
-  const messages = [
-    "If you say no again, no dogs bae",
-    "Baee cmonn, iluvvyouuu🥺",
-    "For Daksh and Reeyan bae cmonn🥺🙏🏽",
-    "Im gon bomb ur wedding if u aint tryna be mine😡💣",
-    "Dont do this to me bae😭😔...."
-  ];
+            yesBtn.classList.add('large'); // Enlarge the "Yes" button on each "No"
+        });
 
-  const yesMessage = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses your old money house and i promise to read books with you late at night and make you your cravings if your craving anything in the middle of the night, ill even make sure to put your needs first, and yes we'll get us ur fav dogs aswell. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳`;
-
-  function updateMessage() {
-    if (clickCount < 5) {
-      messageDiv.innerText = messages[clickCount];
-    }
-  }
-
-  function handleNoClick() {
-    clickCount++;
-    updateMessage();
-    yesBtn.style.transform = `scale(${1 + clickCount * 0.2})`;
-  }
-
-  function handleYesClick() {
-    messageDiv.innerText = yesMessage;
-    noBtn.style.display = 'none';
-    yesBtn.style.display = 'none';
-  }
-
-  function handleFinalOption() {
-    noBtn.innerText = 'Fine';
-    noBtn.removeEventListener('click', handleNoClick);
-    noBtn.addEventListener('click', handleYesClick);
-  }
-
-  noBtn.addEventListener('click', () => {
-    if (clickCount < 4) {
-      handleNoClick();
-    } else if (clickCount === 4) {
-      handleFinalOption();
-    }
-  });
-
-  yesBtn.addEventListener('click', handleYesClick);
-</script>
-
+        function resetButtons() {
+            yesBtn.innerHTML = 'Yes';
+            noBtn.innerHTML = 'No';
+            noBtn.style.display = 'inline-block';
+            noBtn.classList.remove('large');
+            noClicks = 0;
+        }
+    </script>
 </body>
 </html>
