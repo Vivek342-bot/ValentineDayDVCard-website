@@ -3,84 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine?</title>
+    <title>Will You Be Mine? 🧸💕</title>
     <style>
         body {
-            background: url('https://source.unsplash.com/1600x900/?romantic,hearts') no-repeat center center/cover;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: url('https://i.imgur.com/O9G4XRx.jpeg') no-repeat center center/cover; /* Romantic aesthetic background */
+            color: white;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            color: white;
-            text-align: center;
-        }
-        .container {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 20px;
         }
         h1 {
-            font-size: 2em;
+            font-size: 32px;
+            background: rgba(255, 182, 193, 0.8);
+            padding: 15px;
+            border-radius: 15px;
+            display: inline-block;
         }
-        button {
+        .btn {
             font-size: 20px;
             padding: 10px 20px;
-            margin: 10px;
-            border: none;
             cursor: pointer;
-            transition: 0.3s;
-        }
-        #yesBtn {
-            background: #ff4d79;
-            color: white;
+            margin: 10px;
             border-radius: 10px;
+            border: none;
+            transition: all 0.3s ease;
         }
-        #noBtn {
-            background: #333;
+        .no {
+            background-color: #ff4d4d;
             color: white;
+        }
+        .yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        .yes:hover {
+            transform: scale(1.1);
+            background-color: #ff85c1;
+        }
+        .text {
+            font-size: 20px;
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
             border-radius: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Will you be my Valentine? 🧸❤️</h1>
-        <button id="yesBtn" onclick="sayYes()">Yes</button>
-        <button id="noBtn" onclick="sayNo()">No</button>
+
+    <h1>Will you be mine, bae? 🥺💖</h1>
+    <div id="buttons">
+        <button class="btn yes" id="yesBtn">Yes</button>
+        <button class="btn no" id="noBtn">No</button>
     </div>
-    
+    <p class="text" id="message">Click Yes or No</p>
+
     <script>
-        let noCount = 0;
-        function sayNo() {
-            noCount++;
-            let noBtn = document.getElementById("noBtn");
-            let yesBtn = document.getElementById("yesBtn");
-            let messages = [
-                "If u say no again, no dogs bae", 
-                "Baee cmonn, iluvvyouuu🥺", 
-                "For Daksh and Reeyan bae cmonn🥺🙏🏽", 
-                "Im gon bomb ur wedding if u aint tryna be mine😡💣", 
-                "Dont do this to me bae😭😔...."
-            ];
-            
-            if (noCount <= messages.length) {
-                alert(messages[noCount - 1]);
+        let noClickCount = 0;
+
+        const yesBtn = document.getElementById('yesBtn');
+        const noBtn = document.getElementById('noBtn');
+        const message = document.getElementById('message');
+
+        function handleNoClick() {
+            noClickCount++;
+
+            if (noClickCount === 1) {
+                message.textContent = "If you say no again, no dogs bae";
+            } else if (noClickCount === 2) {
+                message.textContent = "Baee cmonn, iluvvyouuu🥺";
+            } else if (noClickCount === 3) {
+                message.textContent = "For Dakshh and Reeyan bae cmonn🥺🙏🏽";
+            } else if (noClickCount === 4) {
+                message.textContent = "I'll be your romance book buddy as well as your anime buddy🥺🥺";
+            } else if (noClickCount === 5) {
+                message.textContent = "I'm gon bomb ur wedding if u ain't tryna be mine😡💣";
             } else {
-                alert("Error");
+                message.textContent = "Error.";
             }
-            
-            yesBtn.style.fontSize = `${20 + noCount * 5}px`;
-            noBtn.style.fontSize = `${20 - noCount * 2}px`;
-            if (noBtn.style.fontSize.replace("px", "") < 5) {
-                noBtn.style.display = "none";
-            }
+
+            // Make "Yes" button bigger each time
+            yesBtn.style.fontSize = `${20 + noClickCount * 5}px`;
         }
 
-        function sayYes() {
-            alert("YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses your old money house and i promise to read books with you late at night and make you your cravings if your craving anything in the middle of the night, ill even make sure to put your needs first, and yes we'll get us ur fav dogs aswell. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳");
-        }
-    </script>
-</body>
-</html>
+        function handleYesClick() {
+            message.innerHTML = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤💖
