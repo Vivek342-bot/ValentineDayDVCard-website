@@ -92,18 +92,20 @@
 
       // Increase the size of "Yes" button with every "No" click
       yesBtn.classList.add("large-button");
-
-      // If clicked 5 times, replace "No" with "Fine"
-      if (noClicks >= 5) {
-        noBtn.addEventListener('click', () => {
-          message.textContent = "Okay, Fine... You win 😔";
-        });
-      }
     });
 
     yesBtn.addEventListener('click', () => {
       message.textContent = "YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤 I'll be a GREAT JIJU to Daksh and Reeyan and I'll make sure I take care of you and your family baee😘. We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night, I'll even make sure to put your needs first, and yes, we'll get us your fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳";
       noBtn.style.display = 'none'; // Hide the no button after saying yes
+    });
+
+    // Add event for the "Fine" button
+    noBtn.addEventListener('click', () => {
+      if (noClicks >= 5) {
+        // Redirect to Yes option when "Fine" is clicked
+        noBtn.style.display = 'none'; // Hide Fine button
+        yesBtn.click(); // Trigger the Yes button click event to show the message
+      }
     });
   </script>
 </body>
