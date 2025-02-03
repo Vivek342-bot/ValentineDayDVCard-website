@@ -3,101 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Proposal</title>
+    <title>Valentine's Day Message</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8d7da;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            color: white;
             text-align: center;
-            color: #ffffff;
         }
         .container {
-            background: #ff4d6d;
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
         }
         h1 {
-            font-size: 36px;
-            margin-bottom: 20px;
+            font-size: 24px;
         }
-        .message {
-            font-size: 18px;
-            margin-bottom: 30px;
-        }
-        button {
-            background-color: #ff6f61;
-            color: #ffffff;
+        .btn {
+            background-color: #ffb6b6;
             border: none;
-            padding: 15px 30px;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
             font-size: 18px;
-            border-radius: 10px;
+            margin: 10px;
             cursor: pointer;
-            transition: transform 0.2s ease;
+            border-radius: 5px;
+            transition: all 0.3s;
         }
-        button:hover {
-            transform: scale(1.1);
+        .btn:hover {
+            background-color: #ff8c8c;
         }
-        .yes-btn {
-            background-color: #28a745;
-        }
-        .no-btn {
-            background-color: #dc3545;
-        }
-        .big-btn {
+        .btn-large {
             font-size: 22px;
-            padding: 20px 40px;
+            padding: 20px 30px;
+        }
+        .btn-fine {
+            font-size: 18px;
+            padding: 15px 25px;
+            background-color: #ff4757;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Will you be my Valentine?</h1>
-        <div class="message" id="message">Say yes or no, your choice 😘</div>
-        <button class="no-btn" id="noBtn">No</button>
-        <button class="yes-btn" id="yesBtn">Yes</button>
+        <h1>Will you be mine this Valentine's Day?</h1>
+        <button id="yesButton" class="btn">Yes</button>
+        <button id="noButton" class="btn">No</button>
+        <div id="message"></div>
     </div>
 
     <script>
-        let noClicks = 0;
+        let noCount = 0;
 
-        const messageElement = document.getElementById('message');
-        const noButton = document.getElementById('noBtn');
-        const yesButton = document.getElementById('yesBtn');
-
-        noButton.addEventListener('click', () => {
-            noClicks++;
-
-            if (noClicks === 1) {
-                messageElement.textContent = "If u say no again, no dogs bae";
-            } else if (noClicks === 2) {
-                messageElement.textContent = "Baee cmonn, iluvvyouuu🥺";
-            } else if (noClicks === 3) {
-                messageElement.textContent = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
-            } else if (noClicks === 4) {
-                messageElement.textContent = "Im gon bomb ur wedding if u ain't tryna be mine😡💣";
-                noButton.textContent = "Fine";
-                noButton.classList.add('big-btn');
-            } else if (noClicks >= 5) {
-                messageElement.textContent = "Dont do this to me bae😭😔....";
-                noButton.textContent = "Fine";
-                noButton.classList.add('big-btn');
-                noButton.disabled = true;
-            }
-
-            // Increase the size of Yes button every time "No" is clicked
-            yesButton.classList.add('big-btn');
-        });
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const messageDiv = document.getElementById('message');
 
         yesButton.addEventListener('click', () => {
-            messageElement.textContent = "YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 I'll be a GREAT JIJU to Daksh and Reeyan and I'll make sure I take care of you and your family baee😘. We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. I'll even make sure to put your needs first, and yes, we'll get us your fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳";
-            noButton.disabled = true;  // Disable the No button once Yes is clicked
-            yesButton.disabled = true; // Disable the Yes button once clicked
+            messageDiv.innerHTML = `
+                YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. 
+                We'll get you nice dresses your old money house and i promise to read books with you late at night and make you your cravings if your craving anything in the middle of the night, ill even make sure to put your needs first, and yes we'll get us ur fav dogs aswell. 
+                YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳
+            `;
+            yesButton.disabled = true;
+            noButton.disabled = true;
+        });
+
+        noButton.addEventListener('click', () => {
+            noCount++;
+
+            if (noCount === 1) {
+                messageDiv.innerHTML = "If you say no again, no dogs bae";
+                noButton.style.fontSize = '22px';
+                noButton.style.padding = '20px 30px';
+            } else if (noCount === 2) {
+                messageDiv.innerHTML = "Baee cmonn, iluvvyouuu🥺";
+                noButton.style.fontSize = '24px';
+                noButton.style.padding = '25px 35px';
+            } else if (noCount === 3) {
+                messageDiv.innerHTML = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
+                noButton.style.fontSize = '26px';
+                noButton.style.padding = '30px 40px';
+            } else if (noCount === 4) {
+                messageDiv.innerHTML = "Im gon bomb ur wedding if u aint tryna be mine😡💣";
+                noButton.style.fontSize = '28px';
+                noButton.style.padding = '35px 45px';
+                noButton.textContent = 'Fine';
+                noButton.classList.add('btn-fine');
+            } else if (noCount === 5) {
+                messageDiv.innerHTML = "Dont do this to me bae😭😔....";
+                noButton.disabled = true;
+            }
         });
     </script>
 </body>
