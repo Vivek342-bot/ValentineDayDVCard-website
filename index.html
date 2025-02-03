@@ -17,5 +17,84 @@
             border-radius: 15px;
             display: inline-block;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  
+        }
+        h1 {
+            color: #d63384;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        #no {
+            background-color: #ff4d4d;
+            color: white;
+        }
+    </style>
+</head>
+<body>
 
+    <div class="container">
+        <h1 id="question">Will You Be My Valentine? ❤️</h1>
+        <div class="buttons">
+            <button id="yes" onclick="yesClicked()">Yes</button>
+            <button id="no" onclick="noClicked()">No</button>
+        </div>
+    </div>
+
+    <script>
+        let noClickCount = 0;
+
+        function yesClicked() {
+            document.getElementById("question").innerHTML = "YAYYYYY!!, like I'll be a GREAT JIJU to Daksh and Reeyan and I'll make sure I take care of you and your family baee😘😘";
+            document.getElementById("yes").style.fontSize = "24px";
+            document.getElementById("no").remove();
+        }
+
+        function noClicked() {
+            noClickCount++;
+            let noButton = document.getElementById("no");
+            let yesButton = document.getElementById("yes");
+
+            if (noClickCount === 1) {
+                document.getElementById("question").innerHTML = "If u say no again no dogs bae 🐶🚫";
+            } else if (noClickCount === 2) {
+                document.getElementById("question").innerHTML = "Baee cmonn, iluvvyouuu🥺";
+            } else if (noClickCount === 3) {
+                document.getElementById("question").innerHTML = "For Dakshh and Reeyan bae cmonn 😭";
+            } else if (noClickCount === 4) {
+                document.getElementById("question").innerHTML = "I'm gon bomb ur wedding if u ain't tryna be mine 💣😂";
+                noButton.remove(); // Remove "No" button after 4 clicks
+                let newYes = document.createElement("button");
+                newYes.innerHTML = "yes";
+                newYes.onclick = yesClicked;
+                newYes.style.backgroundColor = "#ff69b4";
+                newYes.style.color = "white";
+                newYes.style.fontSize = "18px";
+                newYes.style.padding = "10px 20px";
+                newYes.style.margin = "10px";
+                newYes.style.border = "none";
+                newYes.style.borderRadius = "10px";
+                newYes.style.cursor = "pointer";
+                document.querySelector(".buttons").appendChild(newYes);
+            }
+
+            // Make "Yes" button bigger each time "No" is clicked
+            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize + 5) + "px";
+        }
+    </script>
+
+</body>
+</html>
