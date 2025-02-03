@@ -57,7 +57,10 @@
         let noClickCount = 0;
 
         function yesClicked() {
-            document.getElementById("question").innerHTML = "YAYYYYY!!, like I'll be a GREAT JIJU to Daksh and Reeyan and I'll make sure I take care of you and your family baee😘😘";
+            document.getElementById("question").innerHTML = 
+                "YAYYYYY!!, like I'll be a GREAT JIJU to Daksh and Reeyan and I'll make sure I take care of you and your family baee😘. " + 
+                "We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings " + 
+                "if you're craving anything in the middle of the night. I'll even make sure to put your needs first. PLEASEE GIMME A CHANCE🥺";
             document.getElementById("yes").style.fontSize = "24px";
             document.getElementById("no").remove();
         }
@@ -76,6 +79,8 @@
             } else if (noClickCount === 4) {
                 document.getElementById("question").innerHTML = "I'm gon bomb ur wedding if u ain't tryna be mine 💣😂";
                 noButton.remove(); // Remove "No" button after 4 clicks
+                
+                // Add second "Yes" button
                 let newYes = document.createElement("button");
                 newYes.innerHTML = "yes";
                 newYes.onclick = yesClicked;
