@@ -8,15 +8,18 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background-color: #ffb6c1;
+            background: url('https://i.imgur.com/6yLlL8d.jpg') no-repeat center center fixed;
+            background-size: cover;
             padding: 50px;
+            color: white;
         }
         .container {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 15px;
             display: inline-block;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            color: black;
         }
         h1 {
             color: #d63384;
@@ -60,7 +63,8 @@
             document.getElementById("question").innerHTML = 
                 "YAYYYYY!!, like I'll be a GREAT JIJU to Daksh and Reeyan and I'll make sure I take care of you and your family baee😘. " + 
                 "We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings " + 
-                "if you're craving anything in the middle of the night. I'll even make sure to put your needs first. PLEASEE GIMME A CHANCE🥺";
+                "if you're craving anything in the middle of the night. I'll even make sure to put your needs first, and yes we'll get us your fav dogs as well. " +
+                "YIPPPPEEEEE I KNEW YOU'D SAYYY YESSS🥳🥳";
             document.getElementById("yes").style.fontSize = "24px";
             document.getElementById("no").remove();
         }
@@ -75,9 +79,9 @@
             } else if (noClickCount === 2) {
                 document.getElementById("question").innerHTML = "Baee cmonn, iluvvyouuu🥺";
             } else if (noClickCount === 3) {
-                document.getElementById("question").innerHTML = "For Dakshh and Reeyan bae cmonn 😭";
+                document.getElementById("question").innerHTML = "For Dakshh and Reeyan bae cmonn🥺🙏🏽";
             } else if (noClickCount === 4) {
-                document.getElementById("question").innerHTML = "I'm gon bomb ur wedding if u ain't tryna be mine 💣😂";
+                document.getElementById("question").innerHTML = "I'm gon bomb ur wedding if u ain't tryna be mine😡💣";
                 noButton.remove(); // Remove "No" button after 4 clicks
                 
                 // Add second "Yes" button
