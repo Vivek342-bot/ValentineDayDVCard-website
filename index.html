@@ -3,126 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Say Yes or No</title>
+    <title>Be My Valentine?</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ff8c00, #ff0066);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0;
-            color: white;
+            background: url('https://source.unsplash.com/1600x900/?romantic,couple,flowers') no-repeat center center/cover;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
             text-align: center;
+            color: white;
+            font-size: 24px;
         }
         .container {
+            background: rgba(0, 0, 0, 0.6);
             padding: 20px;
             border-radius: 15px;
-            background-color: rgba(0, 0, 0, 0.7);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-        .buttons {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
         }
         button {
-            background-color: #ff0066;
-            color: white;
-            padding: 15px 30px;
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
             border: none;
-            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s;
+            border-radius: 10px;
         }
-        button:hover {
-            background-color: #ff8c00;
-            transform: scale(1.1);
+        #yes {
+            background: #ff4d79;
+            color: white;
         }
-        button#yes {
-            font-size: 1.2rem;
-        }
-        .message {
-            font-size: 1.2rem;
-            margin-top: 20px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-        .big-button {
-            font-size: 1.5rem;
-            transition: all 0.3s;
-        }
-        .big-button:hover {
-            transform: scale(1.2);
+        #no {
+            background: #333;
+            color: white;
         }
     </style>
 </head>
 <body>
-
     <div class="container">
-        <h1>Will you be my Valentine?</h1>
-        <div class="buttons">
-            <button id="no" onclick="handleNo()">No</button>
-            <button id="yes" onclick="handleYes()">Yes</button>
-        </div>
-        <div class="message" id="message"></div>
+        <p id="question">Will you be my Valentine? 🥰</p>
+        <button id="yes" onclick="sayYes()">Yes</button>
+        <button id="no" onclick="sayNo()">No</button>
     </div>
 
     <script>
-        let noCount = 0;
-
-        function handleNo() {
-            const messageDiv = document.getElementById("message");
+        let noClicks = 0;
+        function sayNo() {
+            noClicks++;
+            const noButton = document.getElementById("no");
             const yesButton = document.getElementById("yes");
-            noCount++;
-
-            // Adjust button size for Yes
-            yesButton.style.fontSize = `${1.2 + noCount * 0.1}rem`;
-
-            switch (noCount) {
-                case 1:
-                    messageDiv.innerHTML = "If you say no again, no dogs bae.";
-                    break;
-                case 2:
-                    messageDiv.innerHTML = "Baee cmonn, iluvvyouuu🥺";
-                    break;
-                case 3:
-                    messageDiv.innerHTML = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
-                    break;
-                case 4:
-                    messageDiv.innerHTML = "Im gon bomb ur wedding if you ain't tryna be mine😡💣";
-                    break;
-                case 5:
-                    messageDiv.innerHTML = "Dont do this to me bae😭😔....";
-                    break;
-                default:
-                    messageDiv.innerHTML = "Please, just say YES!";
-                    break;
+            const question = document.getElementById("question");
+            
+            if (noClicks === 1) {
+                question.innerText = "If u say no again, no dogs bae";
+            } else if (noClicks === 2) {
+                question.innerText = "Baee cmonn, iluvvyouuu🥺";
+            } else if (noClicks === 3) {
+                question.innerText = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
+            } else if (noClicks === 4) {
+                question.innerText = "Im gon bomb ur wedding if u aint tryna be mine😡💣";
+                noButton.innerText = "Fine";
+            } else if (noClicks === 5) {
+                question.innerText = "Dont do this to me bae😭😔....";
+                noButton.style.display = "none";
             }
-
-            // Show the message with fade-in effect
-            messageDiv.style.opacity = 1;
+            
+            yesButton.style.fontSize = (20 + noClicks * 5) + "px"; 
         }
-
-        function handleYes() {
-            const messageDiv = document.getElementById("message");
-            messageDiv.innerHTML = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 
-                                    ill be a GREAT JIJU to Daksh and Reeyan and ill make sure i take care of u 
-                                    and ur family baee😘. We'll get you nice dresses, your old money house, 
-                                    and i promise to read books with you late at night and make you your cravings 
-                                    if your craving anything in the middle of the night, ill even make sure to 
-                                    put your needs first, and yes we'll get us your fav dogs aswell. 
-                                    YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳`;
-
-            // Fade in the message
-            messageDiv.style.opacity = 1;
+        
+        function sayYes() {
+            document.querySelector(".container").innerHTML = `<p>YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to Daksh and Reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. I'll even make sure to put your needs first, and yes, we'll get us your fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳</p>`;
         }
     </script>
-
 </body>
 </html>
