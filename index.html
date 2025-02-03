@@ -3,103 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Click Yes or No</title>
+    <title>Will You Be My Valentine? ❤️</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
-            background: linear-gradient(to bottom, #ff7cce, #ff4d77); /* Pink gradient */
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: url('https://i.imgur.com/3hW9M7b.jpg') no-repeat center center fixed;
+            background-size: cover;
+            padding: 50px;
             color: white;
-            flex-direction: column;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            color: black;
         }
         h1 {
-            font-size: 30px;
-            margin-bottom: 20px;
+            color: #d63384;
         }
-        .btn {
-            font-size: 20px;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin: 10px;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        .no {
-            background-color: #ff4d4d;
-        }
-        .yes {
-            background-color: #4dff4d;
-        }
-        .yes:hover, .no:hover {
-            transform: scale(1.1);
-        }
-        .text {
-            font-size: 18px;
+        .buttons {
             margin-top: 20px;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #ff69b4;
+            color: white;
+        }
+        #no {
+            background-color: #ff4d4d;
+            color: white;
         }
     </style>
 </head>
 <body>
 
-    <h1>Will you be mine, bae? 🥺</h1>
-    <div id="buttons">
-        <button class="btn yes" id="yesBtn">Yes</button>
-        <button class="btn no" id="noBtn">No</button>
+    <div class="container">
+        <h1 id="question">Will You Be My Valentine? ❤️</h1>
+        <div class="buttons">
+            <button id="yes" onclick="yesClicked()">Yes</button>
+            <button id="no" onclick="noClicked()">No</button>
+        </div>
     </div>
-    <p class="text" id="message">Click Yes or No</p>
 
     <script>
         let noClickCount = 0;
 
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const message = document.getElementById('message');
-        const buttons = document.getElementById('buttons');
+        function yesClicked() {
+            document.getElementById("question").innerHTML = 
+                "YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤 I'll be a GREAT JIJU to Daksh and Reeyan " + 
+                "and I'll make sure I take care of you and your family baee😘. We'll get you nice dresses, your old money house, " + 
+                "and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. " + 
+                "I'll even make sure to put your needs first, and yes we'll get us your fav dogs as well. YIPPPPEEEEE I KNEW YOU'D SAYYY YESSS🥳🥳";
+            document.getElementById("yes").style.fontSize = "24px";
+            document.getElementById("no").remove();
+        }
 
-        // Function to handle "No" clicks and update the message
-        function handleNoClick() {
+        function noClicked() {
             noClickCount++;
+            let noButton = document.getElementById("no");
+            let yesButton = document.getElementById("yes");
 
             if (noClickCount === 1) {
-                message.textContent = "If you say no again, no dogs bae";
+                document.getElementById("question").innerHTML = "If u say no again no dogs bae 🐶🚫";
             } else if (noClickCount === 2) {
-                message.textContent = "Baee cmonn, iluvvyouuu🥺";
+                document.getElementById("question").innerHTML = "Baee cmonn, iluvvyouuu🥺";
             } else if (noClickCount === 3) {
-                message.textContent = "For Dakshh and Reeyan bae cmonn🥺🙏🏽";
+                document.getElementById("question").innerHTML = "For Dakshh and Reeyan bae cmonn🥺🙏🏽";
             } else if (noClickCount === 4) {
-                message.textContent = "I'll be your romance book buddy as well as your anime buddy🥺🥺";
-            } else if (noClickCount === 5) {
-                message.textContent = "I'm gon bomb ur wedding if you ain't tryna be mine😡💣";
+                document.getElementById("question").innerHTML = "I'm gon bomb ur wedding if u ain't tryna be mine😡💣";
+                noButton.remove(); // Remove "No" button after 4 clicks
+                
+                // Add second "Yes" button
+                let newYes = document.createElement("button");
+                newYes.innerHTML = "yes";
+                newYes.onclick = yesClicked;
+                newYes.style.backgroundColor = "#ff69b4";
+                newYes.style.color = "white";
+                newYes.style.fontSize = "18px";
+                newYes.style.padding = "10px 20px";
+                newYes.style.margin = "10px";
+                newYes.style.border = "none";
+                newYes.style.borderRadius = "10px";
+                newYes.style.cursor = "pointer";
+                document.querySelector(".buttons").appendChild(newYes);
             }
 
-            // If it's the 5th time clicking no, change buttons
-            if (noClickCount >= 5) {
-                noBtn.style.display = 'none';
-                const yesBtn2 = document.createElement('button');
-                yesBtn2.textContent = 'yes';
-                yesBtn2.classList.add('btn', 'yes');
-                buttons.appendChild(yesBtn2);
-
-                yesBtn2.addEventListener('click', handleYesClick);
-            }
-
-            // Make the "Yes" button bigger
-            yesBtn.style.fontSize = `${20 + noClickCount * 5}px`;
+            // Make "Yes" button bigger each time "No" is clicked
+            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize + 5) + "px";
         }
-
-        // Function to handle "Yes" clicks
-        function handleYesClick() {
-            message.textContent = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤 I'll be a GREAT jiju to Daksh and Reeyan baee, and I'll make sure I take care of you and your family with all my heart🫡. We'll get you nice dresses, your old money house, your amazing shiny jewelry, and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. I'll even make sure to put your needs first, and yes, we'll get us your fav dogs as well.`;
-        }
-
-        // Event listeners for the buttons
-        yesBtn.addEventListener('click', handleYesClick);
-        noBtn.addEventListener('click', handleNoClick);
     </script>
 
 </body>
