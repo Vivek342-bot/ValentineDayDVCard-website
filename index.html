@@ -1,112 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be My Valentine? ❤️</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            /* Romantic background image */
-            background: url('https://i.imgur.com/3GdZecD.jpg') no-repeat center center fixed;
-            background-size: cover;
-            padding: 50px;
-            color: white;
-        }
-        .container {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 20px;
-            border-radius: 15px;
-            display: inline-block;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            color: black;
-        }
-        h1 {
-            color: #e91e63;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        #yes {
-            background-color: #ff69b4;
-            color: white;
-        }
-        #no {
-            background-color: #ff4d4d;
-            color: white;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Romantic Proposal</title>
+  <style>
+    body {
+      background: url('https://www.w3schools.com/w3images/flowers.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .button {
+      background-color: #f44336;
+      border: none;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 20px;
+      cursor: pointer;
+      margin: 10px;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .button:hover {
+      background-color: #d32f2f;
+      transform: scale(1.1);
+    }
+
+    .yes {
+      background-color: #4CAF50;
+    }
+
+    .yes:hover {
+      background-color: #388E3C;
+    }
+
+    .message {
+      font-size: 24px;
+      margin: 20px;
+    }
+  </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1 id="question">Will You Be My Valentine? ❤️</h1>
-        <div class="buttons">
-            <button id="yes" onclick="yesClicked()">Yes</button>
-            <button id="no" onclick="noClicked()">No</button>
-        </div>
-    </div>
+  <div class="message" id="message">Will you be mine?</div>
 
-    <script>
-        let noClickCount = 0;
+  <button class="button yes" id="yesBtn" onclick="handleClick('yes')">Yes</button>
+  <button class="button" id="noBtn" onclick="handleClick('no')">No</button>
 
-        function yesClicked() {
-            document.getElementById("question").innerHTML = 
-                "YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤 I'll be a GREAT JIJU to Daksh and Reeyan " + 
-                "and I'll make sure I take care of you and your family baee😘. We'll get you nice dresses, your old money house, " + 
-                "and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. " + 
-                "I'll even make sure to put your needs first, and yes we'll get us your fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳";
-            document.getElementById("yes").style.fontSize = "24px";
-            document.getElementById("no").remove();
+  <script>
+    let noCount = 0;
+
+    function handleClick(answer) {
+      const messageElement = document.getElementById('message');
+      const yesBtn = document.getElementById('yesBtn');
+      const noBtn = document.getElementById('noBtn');
+
+      if (answer === 'no') {
+        noCount++;
+
+        if (noCount === 1) {
+          messageElement.textContent = "If you say no again, no dogs bae!";
+        } else if (noCount === 2) {
+          messageElement.textContent = "Baee cmonn, iluvvyouuu🥺";
+        } else if (noCount === 3) {
+          messageElement.textContent = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
+        } else if (noCount === 4) {
+          messageElement.textContent = "Im gon bomb ur wedding if u ain't tryna be mine😡💣";
+        } else if (noCount === 5) {
+          messageElement.textContent = "Dont do this to me bae😭😔....";
+          noBtn.style.display = 'none';
+          const fineBtn = document.createElement('button');
+          fineBtn.className = 'button';
+          fineBtn.textContent = 'Fine';
+          fineBtn.onclick = () => handleClick('fine');
+          document.body.appendChild(fineBtn);
         }
 
-        function noClicked() {
-            noClickCount++;
-            let noButton = document.getElementById("no");
-            let yesButton = document.getElementById("yes");
+        yesBtn.style.transform = `scale(${1 + noCount * 0.1})`; // Grow the Yes button each time.
+      } else if (answer === 'yes') {
+        messageElement.textContent = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. I'll even make sure to put your needs first, and yes we'll get us your fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳`;
+        yesBtn.style.backgroundColor = '#388E3C';
+        yesBtn.style.pointerEvents = 'none';
+      } else if (answer === 'fine') {
+        messageElement.textContent = "I guess it's fine... 😔";
+        yesBtn.style.pointerEvents = 'none';
+      }
 
-            if (noClickCount === 1) {
-                document.getElementById("question").innerHTML = "If u say no again no dogs bae 🐶🚫";
-            } else if (noClickCount === 2) {
-                document.getElementById("question").innerHTML = "Baee cmonn, iluvvyouuu🥺";
-            } else if (noClickCount === 3) {
-                document.getElementById("question").innerHTML = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
-            } else if (noClickCount === 4) {
-                document.getElementById("question").innerHTML = "I'm gon bomb ur wedding if u ain't tryna be mine😡💣";
-            } else if (noClickCount === 5) {
-                document.getElementById("question").innerHTML = "Dont do this to me bae😭😔....";
-                noButton.remove(); // Remove "No" button after 5 clicks
-                
-                // Add second "Yes" button
-                let newYes = document.createElement("button");
-                newYes.innerHTML = "yes";
-                newYes.onclick = yesClicked;
-                newYes.style.backgroundColor = "#ff69b4";
-                newYes.style.color = "white";
-                newYes.style.fontSize = "18px";
-                newYes.style.padding = "10px 20px";
-                newYes.style.margin = "10px";
-                newYes.style.border = "none";
-                newYes.style.borderRadius = "10px";
-                newYes.style.cursor = "pointer";
-                document.querySelector(".buttons").appendChild(newYes);
-            }
-
-            // Make "Yes" button bigger each time "No" is clicked
-            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = (currentSize + 5) + "px";
-        }
-    </script>
+      // Prevent "No" option from showing again after 5 tries.
+      if (noCount === 5) {
+        noBtn.style.display = 'none';
+      }
+    }
+  </script>
 
 </body>
 </html>
