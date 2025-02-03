@@ -3,110 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Romantic Proposal</title>
+  <title>Valentine's Day Question</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-image: url('https://media.giphy.com/media/3o6ozkV7pdhqvMZl4A/giphy.gif');
-      background-size: cover;
-      background-repeat: no-repeat;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      font-family: 'Arial', sans-serif;
       text-align: center;
       color: white;
       padding: 50px;
-      height: 100vh;
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
+      flex-direction: column;
     }
 
-    .button-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    .message {
+      font-size: 1.2rem;
+      margin: 20px;
+      text-align: center;
     }
 
     .button {
       padding: 15px 30px;
-      font-size: 20px;
+      font-size: 1.2rem;
       cursor: pointer;
+      margin: 10px;
+      background-color: #ff6b81;
       border: none;
-      border-radius: 8px;
-      background-color: rgba(255, 255, 255, 0.6);
-      color: black;
-      transition: transform 0.3s;
+      border-radius: 25px;
+      color: white;
+      transition: all 0.3s ease;
     }
 
     .button:hover {
-      transform: scale(1.1);
+      background-color: #ff4d63;
     }
 
-    .message {
-      font-size: 18px;
-      margin: 20px 0;
-      padding: 10px;
-      border-radius: 10px;
-      background-color: rgba(0, 0, 0, 0.5);
-      width: 80%;
+    .yes-button {
+      transition: all 0.3s ease;
     }
 
-    .large-button {
-      font-size: 24px;
-      padding: 18px 40px;
+    .no-button {
+      transition: all 0.3s ease;
     }
   </style>
 </head>
 <body>
-  <h1>Will you be mine, bae?</h1>
-  <div id="message" class="message">Click Yes or No!</div>
-  
-  <div id="options" class="button-container">
-    <button id="yesBtn" class="button">Yes</button>
-    <button id="noBtn" class="button">No</button>
-  </div>
 
-  <script>
-    let noClicks = 0;
+<h1>Will you be my Valentine?</h1>
 
-    const message = document.getElementById('message');
-    const yesBtn = document.getElementById('yesBtn');
-    const noBtn = document.getElementById('noBtn');
+<div class="message" id="message">
+  If you say no again, no dogs bae
+</div>
 
-    noBtn.addEventListener('click', () => {
-      noClicks++;
+<button class="button no-button" id="noBtn">No</button>
+<button class="button yes-button" id="yesBtn">Yes</button>
 
-      if (noClicks === 1) {
-        message.textContent = "If u say no again no dogs bae";
-      } else if (noClicks === 2) {
-        message.textContent = "Baee cmonn, iluvvyouuu🥺";
-      } else if (noClicks === 3) {
-        message.textContent = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
-      } else if (noClicks === 4) {
-        message.textContent = "Im gon bomb ur wedding if u aint tryna be mine😡💣";
-      } else if (noClicks === 5) {
-        message.textContent = "Dont do this to me bae😭😔....";
-        // Change "No" to "Fine" after the 5th click
-        noBtn.textContent = "Fine";
-        noBtn.classList.add("large-button");
-      }
+<script>
+  let clickCount = 0;
+  const noBtn = document.getElementById('noBtn');
+  const yesBtn = document.getElementById('yesBtn');
+  const messageDiv = document.getElementById('message');
 
-      // Increase the size of "Yes" button with every "No" click
-      yesBtn.classList.add("large-button");
-    });
+  const messages = [
+    "If you say no again, no dogs bae",
+    "Baee cmonn, iluvvyouuu🥺",
+    "For Daksh and Reeyan bae cmonn🥺🙏🏽",
+    "Im gon bomb ur wedding if u aint tryna be mine😡💣",
+    "Dont do this to me bae😭😔...."
+  ];
 
-    yesBtn.addEventListener('click', () => {
-      message.textContent = "YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤 I'll be a GREAT JIJU to Daksh and Reeyan and I'll make sure I take care of you and your family baee😘. We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night, I'll even make sure to put your needs first, and yes, we'll get us your fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳";
-      noBtn.style.display = 'none'; // Hide the no button after saying yes
-    });
+  const yesMessage = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses your old money house and i promise to read books with you late at night and make you your cravings if your craving anything in the middle of the night, ill even make sure to put your needs first, and yes we'll get us ur fav dogs aswell. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳`;
 
-    // Add event for the "Fine" button
-    noBtn.addEventListener('click', () => {
-      if (noClicks >= 5) {
-        // Redirect to Yes option when "Fine" is clicked
-        noBtn.style.display = 'none'; // Hide Fine button
-        yesBtn.click(); // Trigger the Yes button click event to show the message
-      }
-    });
-  </script>
+  function updateMessage() {
+    if (clickCount < 5) {
+      messageDiv.innerText = messages[clickCount];
+    }
+  }
+
+  function handleNoClick() {
+    clickCount++;
+    updateMessage();
+    yesBtn.style.transform = `scale(${1 + clickCount * 0.2})`;
+  }
+
+  function handleYesClick() {
+    messageDiv.innerText = yesMessage;
+    noBtn.style.display = 'none';
+    yesBtn.style.display = 'none';
+  }
+
+  function handleFinalOption() {
+    noBtn.innerText = 'Fine';
+    noBtn.removeEventListener('click', handleNoClick);
+    noBtn.addEventListener('click', handleYesClick);
+  }
+
+  noBtn.addEventListener('click', () => {
+    if (clickCount < 4) {
+      handleNoClick();
+    } else if (clickCount === 4) {
+      handleFinalOption();
+    }
+  });
+
+  yesBtn.addEventListener('click', handleYesClick);
+</script>
+
 </body>
 </html>
