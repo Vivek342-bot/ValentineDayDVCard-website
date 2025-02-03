@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Be My Valentine ❤️</title>
+    <title>Will You Be My Valentine? ❤️</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,69 +17,5 @@
             border-radius: 15px;
             display: inline-block;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        h1 {
-            color: #d63384;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        #yes {
-            background-color: #ff69b4;
-            color: white;
-        }
-        #no {
-            background-color: #ff4d4d;
-            color: white;
-        }
-    </style>
-</head>
-<body>
+  
 
-    <div class="container">
-        <h1 id="question">Will You Be My Valentine? ❤️</h1>
-        <div class="buttons">
-            <button id="yes" onclick="yesClicked()">Yes</button>
-            <button id="no" onclick="noClicked()">No</button>
-        </div>
-    </div>
-
-    <script>
-        let noClickCount = 0;
-
-        function yesClicked() {
-            document.getElementById("question").innerHTML = 
-                "YAYYYYY!! 🎉 Like be a GREAT JIJU to Daksh and Reeyan and I'll make sure I take care of you and your family, baee😘😘";
-            document.getElementById("yes").style.display = "none";
-            document.getElementById("no").style.display = "none";
-        }
-
-        function noClicked() {
-            noClickCount++;
-
-            let messages = [
-                "If u say no again, no dogs bae 😢🐶",
-                "Baee cmonn, iluvvyouuu🥺",
-                "For Dakshh and Reeyan, bae cmonn! 💕",
-                "Im gon bomb ur wedding if u aint tryna be mine 💣😡😂"
-            ];
-
-            if (noClickCount < 4) {
-                document.getElementById("question").innerHTML = messages[noClickCount - 1];
-            } else {
-                yesClicked(); // If they click "No" 4 times, it auto-switches to "Yes"
-            }
-        }
-    </script>
-
-</body>
-</html>
