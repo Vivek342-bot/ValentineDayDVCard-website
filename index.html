@@ -8,13 +8,14 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            background: url('https://i.imgur.com/4E9Tmmr.jpg') no-repeat center center fixed; /* Romantic background image */
+            /* Romantic background with a teddy bear GIF */
+            background: url('https://i.imgur.com/3hW9M7b.jpg') no-repeat center center fixed;
             background-size: cover;
             padding: 50px;
             color: white;
         }
         .container {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 15px;
             display: inline-block;
@@ -22,7 +23,7 @@
             color: black;
         }
         h1 {
-            color: #ff3366; /* Soft pink text */
+            color: #d63384;
         }
         .buttons {
             margin-top: 20px;
@@ -44,6 +45,11 @@
             background-color: #ff4d4d;
             color: white;
         }
+        #gif {
+            margin-top: 20px;
+            width: 200px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -54,17 +60,25 @@
             <button id="yes" onclick="yesClicked()">Yes</button>
             <button id="no" onclick="noClicked()">No</button>
         </div>
+        <!-- Teddy bear GIF -->
+        <img id="gif" src="https://media.giphy.com/media/RtUbjXb3PT9E4/giphy.gif" alt="Teddy Bear GIF">
     </div>
 
     <script>
         let noClickCount = 0;
 
         function yesClicked() {
+            // Changing the question and displaying a new romantic message
             document.getElementById("question").innerHTML = 
                 "YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤 I'll be a GREAT JIJU to Daksh and Reeyan " + 
                 "and I'll make sure I take care of you and your family baee😘. We'll get you nice dresses, your old money house, " + 
                 "and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. " + 
                 "I'll even make sure to put your needs first, and yes we'll get us your fav dogs as well. YIPPPPEEEEE I KNEW YOU'D SAYYY YESSS🥳🥳";
+            
+            // Change the GIF to the kissing teddy bears after "Yes"
+            document.getElementById("gif").src = "https://media.giphy.com/media/ArbDCaqnUtnVS/giphy.gif";
+            
+            // Make "Yes" button bigger
             document.getElementById("yes").style.fontSize = "24px";
             document.getElementById("no").remove();
         }
@@ -82,26 +96,44 @@
                 document.getElementById("question").innerHTML = "For Dakshh and Reeyan bae cmonn🥺🙏🏽";
             } else if (noClickCount === 4) {
                 document.getElementById("question").innerHTML = "I'm gon bomb ur wedding if u ain't tryna be mine😡💣";
-                noButton.remove(); // Remove "No" button after 4 clicks
-                
-                // Add second "Yes" button
-                let newYes = document.createElement("button");
-                newYes.innerHTML = "yes";
-                newYes.onclick = yesClicked;
-                newYes.style.backgroundColor = "#ff69b4";
-                newYes.style.color = "white";
-                newYes.style.fontSize = "18px";
-                newYes.style.padding = "10px 20px";
-                newYes.style.margin = "10px";
-                newYes.style.border = "none";
-                newYes.style.borderRadius = "10px";
-                newYes.style.cursor = "pointer";
-                document.querySelector(".buttons").appendChild(newYes);
+            } else if (noClickCount === 5) {
+                document.getElementById("question").innerHTML = "Dont do this to me bae😭😔....";
             }
 
-            // Make "Yes" button bigger each time "No" is clicked
+            // Make "Yes" button grow larger each time "No" is clicked
             let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
             yesButton.style.fontSize = (currentSize + 5) + "px";
+
+            if (noClickCount === 5) {
+                // Remove "No" and add two "Yes" buttons
+                noButton.remove();
+                let newYes1 = document.createElement("button");
+                newYes1.innerHTML = "yes";
+                newYes1.onclick = yesClicked;
+                newYes1.style.backgroundColor = "#ff69b4";
+                newYes1.style.color = "white";
+                newYes1.style.fontSize = "18px";
+                newYes1.style.padding = "10px 20px";
+                newYes1.style.margin = "10px";
+                newYes1.style.border = "none";
+                newYes1.style.borderRadius = "10px";
+                newYes1.style.cursor = "pointer";
+
+                let newYes2 = document.createElement("button");
+                newYes2.innerHTML = "Yes";
+                newYes2.onclick = yesClicked;
+                newYes2.style.backgroundColor = "#ff69b4";
+                newYes2.style.color = "white";
+                newYes2.style.fontSize = "18px";
+                newYes2.style.padding = "10px 20px";
+                newYes2.style.margin = "10px";
+                newYes2.style.border = "none";
+                newYes2.style.borderRadius = "10px";
+                newYes2.style.cursor = "pointer";
+
+                document.querySelector(".buttons").appendChild(newYes1);
+                document.querySelector(".buttons").appendChild(newYes2);
+            }
         }
     </script>
 
