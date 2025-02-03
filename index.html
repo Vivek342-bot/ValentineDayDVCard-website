@@ -8,8 +8,8 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            /* Sun, moon, and sunflower background */
-            background: url('https://i.imgur.com/3hW9M7b.jpg') no-repeat center center fixed;
+            /* Background image of the sun, moon, and sunflowers */
+            background: url('https://i.imgur.com/tQ5xZmw.jpg') no-repeat center center fixed;
             background-size: cover;
             padding: 50px;
             color: white;
@@ -45,18 +45,25 @@
             background-color: #ff4d4d;
             color: white;
         }
-        .dogs img {
-            width: 100px;
-            margin: 20px;
-            opacity: 0;
-            animation: showDog 2s forwards;
+        /* Golden retriever dogs style */
+        .dogs {
+            display: none;
+            margin-top: 20px;
         }
-        @keyframes showDog {
+        .dog {
+            width: 100px;
+            margin: 10px;
+            animation: float 2s ease-in-out infinite;
+        }
+        @keyframes float {
             0% {
-                opacity: 0;
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
             }
             100% {
-                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -71,7 +78,13 @@
         </div>
     </div>
 
-    <div class="dogs" id="dogs"></div>
+    <div class="dogs" id="dogs">
+        <img src="https://i.imgur.com/OJZqU1w.jpg" class="dog" alt="Golden Retriever 1">
+        <img src="https://i.imgur.com/OJZqU1w.jpg" class="dog" alt="Golden Retriever 2">
+        <img src="https://i.imgur.com/OJZqU1w.jpg" class="dog" alt="Golden Retriever 3">
+        <img src="https://i.imgur.com/OJZqU1w.jpg" class="dog" alt="Golden Retriever 4">
+        <img src="https://i.imgur.com/OJZqU1w.jpg" class="dog" alt="Golden Retriever 5">
+    </div>
 
     <script>
         let noClickCount = 0;
@@ -85,12 +98,8 @@
             document.getElementById("yes").style.fontSize = "24px";
             document.getElementById("no").remove();
 
-            // Show 5 Golden Retrievers when Yes is clicked
-            for (let i = 0; i < 5; i++) {
-                let dogImage = document.createElement("img");
-                dogImage.src = 'https://i.imgur.com/5TqkFYz.jpg'; // Golden Retriever image
-                document.getElementById("dogs").appendChild(dogImage);
-            }
+            // Show golden retrievers when "Yes" is clicked
+            document.getElementById("dogs").style.display = "block";
         }
 
         function noClicked() {
