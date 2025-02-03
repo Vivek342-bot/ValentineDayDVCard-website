@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be Mine? 🧸💕</title>
+    <title>Will You Be Mine? 💕</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
             text-align: center;
             background: url('https://i.imgur.com/O9G4XRx.jpeg') no-repeat center center/cover; /* Romantic aesthetic background */
-            color: pink;
+            color: white;
             height: 100vh;
             display: flex;
             flex-direction: column;
@@ -91,4 +91,18 @@
         }
 
         function handleYesClick() {
-            message.innerHTML = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤💖
+            message.innerHTML = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤💖<br> 
+            I'll be a GREAT jiju to Daksh and Reeyan baee, and I'll make sure I take care of you and your family with all my heart🫡.<br> 
+            We'll get you nice dresses, your old money house, your amazing shiny jewelry, and I promise to read books with you late at night 📖✨.<br>
+            I'll make you your cravings if you get hungry in the middle of the night 🍕🍫, and yes, we'll get us your fav dogs as well.🐶💕`;
+            
+            yesBtn.style.display = 'none';
+            noBtn.style.display = 'none';
+        }
+
+        yesBtn.addEventListener('click', handleYesClick);
+        noBtn.addEventListener('click', handleNoClick);
+    </script>
+
+</body>
+</html>
