@@ -3,106 +3,93 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Romantic Proposal</title>
+  <title>Say Yes or No!</title>
   <style>
     body {
-      background: url('https://www.w3schools.com/w3images/flowers.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: white;
       font-family: Arial, sans-serif;
-      text-align: center;
-      height: 100vh;
+      background-color: #f9f0f5;
       display: flex;
       justify-content: center;
       align-items: center;
-      flex-direction: column;
-    }
-
-    .button {
-      background-color: #f44336;
-      border: none;
-      color: white;
-      padding: 20px 40px;
+      height: 100vh;
       text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20px;
-      cursor: pointer;
-      margin: 10px;
+      background-image: url('https://media.giphy.com/media/ftvFqtwF3t6Rm/giphy.gif'); /* Teddy Bear GIF */
+      background-size: cover;
+      color: white;
+    }
+    .container {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
       border-radius: 10px;
-      transition: all 0.3s ease;
+      width: 60%;
     }
-
-    .button:hover {
-      background-color: #d32f2f;
-      transform: scale(1.1);
-    }
-
-    .yes {
-      background-color: #4CAF50;
-    }
-
-    .yes:hover {
-      background-color: #388E3C;
-    }
-
-    .message {
+    .question {
       font-size: 24px;
-      margin: 20px;
+      margin-bottom: 20px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+    }
+    .yes-btn {
+      background-color: #ff69b4;
+      color: white;
+      font-weight: bold;
+    }
+    .no-btn {
+      background-color: #ff6347;
+      color: white;
+      font-weight: bold;
+    }
+    .no-btn.grow {
+      font-size: 30px;
     }
   </style>
 </head>
 <body>
 
-  <div class="message" id="message">Will you be mine?</div>
-
-  <button class="button yes" id="yesBtn" onclick="handleClick('yes')">Yes</button>
-  <button class="button" id="noBtn" onclick="handleClick('no')">No</button>
+  <div class="container">
+    <div id="question" class="question">Will you be mine forever, babe?</div>
+    <button id="yes-btn" class="yes-btn">Yes</button>
+    <button id="no-btn" class="no-btn">No</button>
+  </div>
 
   <script>
-    let noCount = 0;
+    let noClicks = 0;
+    const questionText = [
+      "If u say no again no dogs bae",
+      "Baee cmonn, iluvvyouuu🥺",
+      "For Daksh and Reeyan bae cmonn🥺🙏🏽",
+      "Im gon bomb ur wedding if u aint tryna be mine😡💣",
+      "Dont do this to me bae😭😔...."
+    ];
+    
+    const yesMessage = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae dont worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses your old money house and i promise to read books with you late at night and make you your cravings if your craving anything in the middle of the night, ill even make sure to put your needs first, and yes we'll get us ur fav dogs aswell. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳`;
 
-    function handleClick(answer) {
-      const messageElement = document.getElementById('message');
-      const yesBtn = document.getElementById('yesBtn');
-      const noBtn = document.getElementById('noBtn');
+    const questionElem = document.getElementById('question');
+    const yesBtn = document.getElementById('yes-btn');
+    const noBtn = document.getElementById('no-btn');
 
-      if (answer === 'no') {
-        noCount++;
+    yesBtn.addEventListener('click', () => {
+      questionElem.textContent = yesMessage;
+      yesBtn.style.display = 'none';
+      noBtn.style.display = 'none';
+    });
 
-        if (noCount === 1) {
-          messageElement.textContent = "If you say no again, no dogs bae!";
-        } else if (noCount === 2) {
-          messageElement.textContent = "Baee cmonn, iluvvyouuu🥺";
-        } else if (noCount === 3) {
-          messageElement.textContent = "For Daksh and Reeyan bae cmonn🥺🙏🏽";
-        } else if (noCount === 4) {
-          messageElement.textContent = "Im gon bomb ur wedding if u ain't tryna be mine😡💣";
-        } else if (noCount === 5) {
-          messageElement.textContent = "Dont do this to me bae😭😔....";
-          noBtn.style.display = 'none';
-          const fineBtn = document.createElement('button');
-          fineBtn.className = 'button';
-          fineBtn.textContent = 'Fine';
-          fineBtn.onclick = () => handleClick('fine');
-          document.body.appendChild(fineBtn);
-        }
-
-        yesBtn.style.transform = `scale(${1 + noCount * 0.1})`; // Grow the Yes button each time.
-      } else if (answer === 'yes') {
-        messageElement.textContent = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤 ill be a GREAT JIJU to daksh and reeyan and ill make sure i take care of u and ur family baee😘. We'll get you nice dresses, your old money house, and I promise to read books with you late at night and make you your cravings if you're craving anything in the middle of the night. I'll even make sure to put your needs first, and yes we'll get us your fav dogs as well. YIPPPPEEEEE WE'RE VALENTINE BUDDYS NOW🥳🥳`;
-        yesBtn.style.backgroundColor = '#388E3C';
-        yesBtn.style.pointerEvents = 'none';
-      } else if (answer === 'fine') {
-        messageElement.textContent = "I guess it's fine... 😔";
-        yesBtn.style.pointerEvents = 'none';
+    noBtn.addEventListener('click', () => {
+      if (noClicks < 4) {
+        questionElem.textContent = questionText[noClicks];
+        noClicks++;
+        noBtn.classList.add('grow');
+      } else {
+        questionElem.textContent = 'Fine';
+        noBtn.textContent = 'Fine';
       }
-
-      // Prevent "No" option from showing again after 5 tries.
-      if (noCount === 5) {
-        noBtn.style.display = 'none';
-      }
-    }
+    });
   </script>
 
 </body>
