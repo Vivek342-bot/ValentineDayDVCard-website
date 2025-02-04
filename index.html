@@ -3,106 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Will You Be Mine? 💕</title>
+    <title>Valentine's Proposal</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            text-align: center;
-            background: url('https://i.imgur.com/O9G4XRx.jpeg') no-repeat center center/cover; /* Romantic aesthetic background */
-            color: white;
-            height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            font-family: Arial, sans-serif;
+            text-align: center;
         }
         h1 {
-            font-size: 32px;
-            background: rgba(255, 182, 193, 0.8);
-            padding: 15px;
-            border-radius: 15px;
-            display: inline-block;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
-        .btn {
-            font-size: 20px;
+        #buttons {
+            display: flex;
+            gap: 20px;
+        }
+        button {
             padding: 10px 20px;
-            cursor: pointer;
-            margin: 10px;
-            border-radius: 10px;
+            font-size: 18px;
             border: none;
+            cursor: pointer;
+            border-radius: 10px;
             transition: all 0.3s ease;
         }
-        .no {
-            background-color: #ff4d4d;
+        #yes {
+            background-color: #ff4d6d;
             color: white;
         }
-        .yes {
-            background-color: #ff69b4;
-            color: white;
+        #no {
+            background-color: #ccc;
         }
-        .yes:hover {
-            transform: scale(1.1);
-            background-color: #ff85c1;
-        }
-        .text {
-            font-size: 20px;
+        #message {
             margin-top: 20px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #teddy-gif {
+            width: 150px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-
-    <h1>Will you be mine, bae? 🥺💖</h1>
+    <h1 id="title">Will you be my valentines Miss's Dhruvi Patel, I would like to turn you into MY Mrs for the day😶‍🌫️<3</h1>
+    <img id="teddy-gif" src="https://media.giphy.com/media/3oriO0OEd9QIDdllqo/giphy.gif" alt="Teddy Bear" />
     <div id="buttons">
-        <button class="btn yes" id="yesBtn">Yes</button>
-        <button class="btn no" id="noBtn">No</button>
+        <button id="yes" onclick="sayYes()">Yes</button>
+        <button id="no" onclick="sayNo()">No</button>
     </div>
-    <p class="text" id="message">Click Yes or No</p>
+    <p id="message"></p>
 
     <script>
         let noClickCount = 0;
-
-        const yesBtn = document.getElementById('yesBtn');
-        const noBtn = document.getElementById('noBtn');
-        const message = document.getElementById('message');
-
-        function handleNoClick() {
-            noClickCount++;
-
-            if (noClickCount === 1) {
-                message.textContent = "If you say no again, no dogs bae";
-            } else if (noClickCount === 2) {
-                message.textContent = "Baee cmonn, iluvvyouuu🥺";
-            } else if (noClickCount === 3) {
-                message.textContent = "For Dakshh and Reeyan bae cmonn🥺🙏🏽";
-            } else if (noClickCount === 4) {
-                message.textContent = "I'll be your romance book buddy as well as your anime buddy🥺🥺";
-            } else if (noClickCount === 5) {
-                message.textContent = "I'm gon bomb ur wedding if u ain't tryna be mine😡💣";
+        const messages = [
+            "Whaaaa butt whyy nott??🥺🥺", 
+            "Baeee cmonnn😔😔", 
+            "Click yes already otherwise ill kidnap Daksh & Reeyan😾😾", 
+            "Baeee iluvvyouu thoo🥺🫶🏽", 
+            "Bae pleasseeeeee://", 
+            "But whyyyy nottt☹️☹️", 
+            "Pleasee clicks yess baeeeee☹️", 
+            "Baeee ill buyyy youuuu soo muchh teddy bears🥺🧸", 
+            "YKW, watch me disable the 'No' button😡😡"
+        ];
+        function sayNo() {
+            if (noClickCount < 9) {
+                document.getElementById("message").innerText = messages[noClickCount];
+                document.getElementById("teddy-gif").src = "https://media.giphy.com/media/k61nOBRRBMxva/giphy.gif"; // Crying teddy bear
+                noClickCount++;
+                document.getElementById("yes").style.fontSize = (18 + noClickCount * 5) + "px";
             } else {
-                message.textContent = "Error.";
+                document.getElementById("no").remove();
+                document.getElementById("message").innerText = "Haahahha now what huh, SAY YES😈";
             }
-
-            // Make "Yes" button bigger each time
-            yesBtn.style.fontSize = `${20 + noClickCount * 5}px`;
         }
-
-        function handleYesClick() {
-            message.innerHTML = `YAYYYYY!! I KNEW YOU WOULD SAY YESSS, bae don't worry 😤💖<br> 
-            I'll be a GREAT jiju to Daksh and Reeyan baee, and I'll make sure I take care of you and your family with all my heart🫡.<br> 
-            We'll get you nice dresses, your old money house, your amazing shiny jewelry, and I promise to read books with you late at night 📖✨.<br>
-            I'll make you your cravings if you get hungry in the middle of the night 🍕🍫, and yes, we'll get us your fav dogs as well.🐶💕`;
-            
-            yesBtn.style.display = 'none';
-            noBtn.style.display = 'none';
+        function sayYes() {
+            document.getElementById("message").innerText = "YAAAAYYYYYYYY, I KNEW YOU'D SAY YESS POOKIEEE🧸💕, dw I promise to watch anime and read romance books with you late at night📖😴, and I promise to put ur needs FIRST🫠🍫. I'll make sure you get the Dogs you want bae😘🐾";
+            document.getElementById("buttons").remove();
+            document.getElementById("teddy-gif").src = "https://media.giphy.com/media/5xaOcLT2aKFNzNFXWDe/giphy.gif"; // Kissing teddy bears
         }
-
-        yesBtn.addEventListener('click', handleYesClick);
-        noBtn.addEventListener('click', handleNoClick);
     </script>
-
 </body>
 </html>
