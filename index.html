@@ -37,6 +37,7 @@
             margin-top: 30px;
             font-size: 20px;
             margin-bottom: 20px;
+            text-align: center;
         }
         .gif {
             margin: 20px 0;
@@ -94,18 +95,19 @@
         ];
 
         const gifs = [
-            "https://media.giphy.com/media/9J7tdLAsFbwRk/giphy.gif",
-            "https://media.giphy.com/media/3o7aD1Clt0tMzZElOE/giphy.gif",
-            "https://media.giphy.com/media/3o6ozOGrtRiE3h59qI/giphy.gif",
-            "https://media.giphy.com/media/dQsyxp2O63lmi/giphy.gif",
-            "https://media.giphy.com/media/xT9IgvT2ay6yzydBbq/giphy.gif",
-            "https://media.giphy.com/media/kXzv48zvvj2y4/giphy.gif",
-            "https://media.giphy.com/media/8sKkNDfvf61lTLO3is/giphy.gif",
-            "https://media.giphy.com/media/d2ZgfH9TeSnt5qOt/giphy.gif",
-            "https://media.giphy.com/media/TSXGLzsy9MlUKmGp4X/giphy.gif"
+            "https://media.giphy.com/media/9J7tdLAsFbwRk/giphy.gif",  // Cute
+            "https://media.giphy.com/media/3o7aD1Clt0tMzZElOE/giphy.gif",  // Sad
+            "https://media.giphy.com/media/3o6ozOGrtRiE3h59qI/giphy.gif",  // Kidnapping
+            "https://media.giphy.com/media/dQsyxp2O63lmi/giphy.gif",  // Love
+            "https://media.giphy.com/media/xT9IgvT2ay6yzydBbq/giphy.gif",  // Begging
+            "https://media.giphy.com/media/kXzv48zvvj2y4/giphy.gif",  // Sadder
+            "https://media.giphy.com/media/8sKkNDfvf61lTLO3is/giphy.gif",  // Desperation
+            "https://media.giphy.com/media/d2ZgfH9TeSnt5qOt/giphy.gif",  // Teddy Bears
+            "https://media.giphy.com/media/TSXGLzsy9MlUKmGp4X/giphy.gif"  // Angry (disable No)
         ];
 
         const yesMessage = "YAAAAYYYYYYYY, I KNEW YOU'D SAY YESS POOKIEEE🧸💕, dw I promise to watch anime and read romance books with you late at night📖😴, and I promise to put ur needs FIRST🫠🍫. I'll make sure you get the Dogs you want bae😘🐾";
+        const yesGif = "https://media.giphy.com/media/8k6tpZ32g6jZA/giphy.gif";  // Celebration GIF
 
         btnNo.onclick = function() {
             noClicks++;
@@ -115,8 +117,8 @@
                 gif.src = gifs[noClicks - 1];
             } else if (noClicks === 10) {
                 message.innerHTML = "Haahahha now what huh, SAY YES😈";
-                btnNo.disabled = true;
-                gif.src = "https://media.giphy.com/media/l4pT0tt6iyFqdyI9G/giphy.gif";
+                btnNo.style.display = "none";  // Remove the 'No' button after 10 clicks
+                gif.src = "https://media.giphy.com/media/TSXGLzsy9MlUKmGp4X/giphy.gif";  // Evil smile GIF
             }
 
             // Make "Yes" button bigger every time "No" is clicked
@@ -125,6 +127,7 @@
 
         btnYes.onclick = function() {
             message.innerHTML = yesMessage;
+            gif.src = yesGif;
             btnYes.style.display = 'none';
         };
     </script>
