@@ -8,16 +8,15 @@
 body {
 display: flex;
 flex-direction: column;
-justify-content: center;
 align-items: center;
+justify-content: center;
 height: 100vh;
-background: linear-gradient(to right, #ff758c, #ff7eb3);
+background: linear-gradient(to right, #ff9a9e, #fad0c4);
 font-family: Arial, sans-serif;
 text-align: center;
-color: white;
 }
 h1 {
-font-size: 28px;
+font-size: 24px;
 margin-bottom: 20px;
 }
 #buttons {
@@ -25,38 +24,42 @@ display: flex;
 gap: 20px;
 }
 button {
-font-size: 18px;
 padding: 10px 20px;
+font-size: 18px;
 border: none;
 cursor: pointer;
 border-radius: 10px;
-transition: all 0.3s;
+transition: all 0.3s ease;
 }
 #yes {
 background-color: #ff4d6d;
 color: white;
 }
 #no {
-background-color: #ffffff;
-color: #ff4d6d;
+background-color: #ccc;
+}
+#message {
+margin-top: 20px;
+font-size: 20px;
+font-weight: bold;
+}
+#teddy-gif {
+width: 150px;
+margin-top: 20px;
 }
 </style>
 </head>
 <body>
-<h1 id="title">Will you be my valentines Misses Dhruvi Patel, I would like to turn you into MY Mrs for the day😶‍🌫️<3!??!</h1>
-<p id="message"></p>
+<h1 id="title">Will you be my valentines Misses Dhruvi Patel, I would like to turn you into MY Mrs for the day😶‍🌫️<3?!?!?!</h1>
+<img id="teddy-gif" src="https://media.giphy.com/media/5bivg9lxvrl9w/giphy.gif" alt="Teddy Bear" />
 <div id="buttons">
-<button id="yes" onclick="yesClicked()">Yes</button>
-<button id="no" onclick="noClicked()">No</button>
+<button id="yes" onclick="sayYes()">Yes</button>
+<button id="no" onclick="sayNo()">No</button>
 </div>
+<p id="message"></p>
 <script>
-let noCount = 0;
-let yesButton = document.getElementById("yes");
-let noButton = document.getElementById("no");
-let message = document.getElementById("message");
-function noClicked() {
-    noCount++;
-    let messages = [
+    let noClickCount = 0;
+    const messages = [
         "Whaaaa butt whyy nott??🥺🥺",
         "Baeee cmonnn😔😔",
         "Click yes already otherwise ill kidnap Daksh & Reeyan😾😾",
@@ -65,25 +68,24 @@ function noClicked() {
         "But whyyyy nottt☹️☹️",
         "Pleasee clicks yess baeeeee☹️",
         "Baeee ill buyyy youuuu soo muchh teddy bears🥺🧸",
-        "Ykw, watch me disable the No button😡😡"
+        "YKW, watch me disable the 'No' button😡😡"
     ];
-
-    if (noCount < 10) {
-        message.innerText = messages[noCount - 1];
-        yesButton.style.transform = `scale(${1 + noCount * 0.2})`;
+    function sayNo() {
+        if (noClickCount < 9) {
+            document.getElementById("message").innerText = messages[noClickCount];
+            document.getElementById("teddy-gif").src = "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif"; // Crying teddy bear
+            noClickCount++;
+            document.getElementById("yes").style.fontSize = (18 + noClickCount * 5) + "px";
+        } else {
+            document.getElementById("no").remove();
+            document.getElementById("message").innerText = "Haahahha now what huh, SAY YES😈";
+        }
     }
-
-    if (noCount === 9) {
-        noButton.disabled = true;
-        message.innerText = "Haahahha now what huh, SAY YES😈";
+    function sayYes() {
+        document.getElementById("message").innerText = "YAAAAYYYYYYYY, I KNEW YOU'D SAY YESS POOKIEEE🧸💕, dw I promise to watch anime and read romance books with you late at night📖😴, and I promise to put ur needs FIRST🫠🍫. I'll make sure you get the Dogs you want bae😘🐾";
+        document.getElementById("buttons").remove();
+        document.getElementById("teddy-gif").src = "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"; // Very happy celebration GIF
     }
-}
-
-function yesClicked() {
-    message.innerText = "YAAAAYYYYYYYY, I KNEW YOU'D SAY YESS POOKIEEE🧸💕, dw I promise to watch anime and read romance books with you late at night📖😴, and I promise to put ur needs FIRST🫠🍫. I'll make sure you get the Dogs you want bae😘🐾";
-    yesButton.style.transform = "scale(1)";
-    noButton.style.display = "none";
-}
 </script>
 </body>
 </html>
