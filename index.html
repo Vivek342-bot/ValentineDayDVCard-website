@@ -71,7 +71,6 @@
             "Baeee ill buyyy youuuu soo muchh teddy bears🥺🧸", 
             "YKW, watch me disable the 'No' button😡😡"
         ];
-
         function sayNo() {
             if (noClickCount < 9) {
                 document.getElementById("message").innerText = messages[noClickCount];
@@ -81,20 +80,12 @@
             } else {
                 document.getElementById("no").remove();
                 document.getElementById("message").innerText = "Haahahha now what huh, SAY YES😈";
-                // Adding a funny GIF when 'No' button is disabled
-                document.getElementById("teddy-gif").src = "https://media.giphy.com/media/LZ5o2AorL8oZA/giphy.gif"; // Laughing/sassy GIF
             }
         }
-
         function sayYes() {
             document.getElementById("message").innerText = "YAAAAYYYYYYYY, I KNEW YOU'D SAY YESS POOKIEEE🧸💕, dw I promise to watch anime and read romance books with you late at night📖😴, and I promise to put ur needs FIRST🫠🍫. I'll make sure you get the Dogs you want bae😘🐾";
             document.getElementById("buttons").remove();
             document.getElementById("teddy-gif").src = "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"; // Very happy celebration GIF
-            // Adding a sweet GIF after they say YES
-            const celebrationGIF = document.createElement('img');
-            celebrationGIF.src = "https://media.giphy.com/media/xUOwG93Hu5cY1uFjeA/giphy.gif"; // Dancing or celebration GIF
-            celebrationGIF.style.width = "200px";
-            document.body.appendChild(celebrationGIF);
         }
     </script>
 </body>
