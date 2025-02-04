@@ -3,90 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine's Proposal</title>
+    <title>Will you be my valentines Miss's Dhruvi Patel, I would like to turn you into MY Mrs for the day😶‍🌫️<3</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: linear-gradient(to right, #ff9a9e, #fad0c4);
-            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #f0c0d5, #f8c1c7);
             text-align: center;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            padding: 0;
+            margin: 0;
+            height: 100vh;
         }
+
         h1 {
             font-size: 24px;
-            margin-bottom: 20px;
+            margin-top: 30px;
         }
-        #buttons {
+
+        .container {
             display: flex;
-            gap: 20px;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            flex-direction: column;
         }
-        button {
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-        #yes {
-            background-color: #ff4d6d;
-            color: white;
-        }
-        #no {
-            background-color: #ccc;
-        }
-        #message {
-            margin-top: 20px;
+
+        .btn {
+            padding: 15px 40px;
             font-size: 20px;
-            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            background-color: #f093c0;
+            color: white;
+            transition: all 0.3s ease;
+            margin: 10px;
         }
-        #teddy-gif {
-            width: 150px;
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+
+        .btn:disabled {
+            background-color: #c0c0c0;
+            cursor: not-allowed;
+        }
+
+        .message {
             margin-top: 20px;
+            font-size: 22px;
+        }
+
+        .gif {
+            margin-top: 20px;
+            width: 400px;
         }
     </style>
 </head>
 <body>
-    <h1 id="title">Will you be my valentines Misses Dhruvi Patel, I would like to turn you into MY Mrs for the day😶‍🌫️<3?!?!?!</h1>
-    <img id="teddy-gif" src="https://media.giphy.com/media/5bivg9lxvrl9w/giphy.gif" alt="Teddy Bear" />
-    <div id="buttons">
-        <button id="yes" onclick="sayYes()">Yes</button>
-        <button id="no" onclick="sayNo()">No</button>
-    </div>
-    <p id="message"></p>
 
-    <script>
-        let noClickCount = 0;
-        const messages = [
-            "Whaaaa butt whyy nott??🥺🥺", 
-            "Baeee cmonnn😔😔", 
-            "Click yes already otherwise ill kidnap Daksh & Reeyan😾😾", 
-            "Baeee iluvvyouu thoo🥺🫶🏽", 
-            "Bae pleasseeeeee://", 
-            "But whyyyy nottt☹️☹️", 
-            "Pleasee clicks yess baeeeee☹️", 
-            "Baeee ill buyyy youuuu soo muchh teddy bears🥺🧸", 
-            "YKW, watch me disable the 'No' button😡😡"
-        ];
-        function sayNo() {
-            if (noClickCount < 9) {
-                document.getElementById("message").innerText = messages[noClickCount];
-                document.getElementById("teddy-gif").src = "https://media.giphy.com/media/ROF8OQvDmxytW/giphy.gif"; // Crying teddy bear
-                noClickCount++;
-                document.getElementById("yes").style.fontSize = (18 + noClickCount * 5) + "px";
-            } else {
-                document.getElementById("no").remove();
-                document.getElementById("message").innerText = "Haahahha now what huh, SAY YES😈";
-            }
+<h1>Will you be my valentines Miss's Dhruvi Patel, I would like to turn you into MY Mrs for the day😶‍🌫️<3</h1>
+
+<div class="container">
+    <button id="noBtn" class="btn">No</button>
+    <button id="yesBtn" class="btn">Yes</button>
+
+    <div id="message" class="message"></div>
+    <img id="gif" class="gif" src="" alt="">
+</div>
+
+<script>
+    let noClicks = 0;
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const message = document.getElementById("message");
+    const gif = document.getElementById("gif");
+
+    const noMessages = [
+        "Whaaaa butt whyy nott??🥺🥺",
+        "Baeee cmonnn😔😔",
+        "Click yes already otherwise ill kidnap Daksh & Reeyan😾😾",
+        "Baeee iluvvyouu thoo🥺🫶🏽",
+        "Bae pleasseeeeee://",
+        "But whyyyy nottt☹️☹️",
+        "Pleasee clicks yess baeeeee☹️",
+        "Baeee ill buyyy youuuu soo muchh teddy bears🥺🧸",
+        "YKW, watch me disable the 'No' button😡😡"
+    ];
+
+    const sadGif = "https://media.giphy.com/media/fdAnWjIqEOG26/giphy.gif"; // Sad GIF URL
+    const happyGif = "https://media.giphy.com/media/xT9Iglg65iwwTcOphW/giphy.gif"; // Happy GIF URL
+
+    noBtn.addEventListener("click", () => {
+        if (noClicks < noMessages.length) {
+            message.textContent = noMessages[noClicks];
+            gif.src = sadGif;
+            noClicks++;
+            yesBtn.style.fontSize = `${20 + (noClicks * 5)}px`; // Make Yes button bigger each time
         }
-        function sayYes() {
-            document.getElementById("message").innerText = "YAAAAYYYYYYYY, I KNEW YOU'D SAY YESS POOKIEEE🧸💕, dw I promise to watch anime and read romance books with you late at night📖😴, and I promise to put ur needs FIRST🫠🍫. I'll make sure you get the Dogs you want bae😘🐾";
-            document.getElementById("buttons").remove();
-            document.getElementById("teddy-gif").src = "https://media.giphy.com/media/5GoVLqeAOo6PK/giphy.gif"; // Very happy celebration GIF
+
+        if (noClicks === noMessages.length) {
+            noBtn.disabled = true;
+            message.textContent = "Haahahha now what huh, SAY YES😈";
         }
-    </script>
+    });
+
+    yesBtn.addEventListener("click", () => {
+        if (noBtn.disabled) {
+            message.textContent = "YAAAAYYYYYYYY, I KNEW YOU'D SAY YESS POOKIEEE🧸💕, dw I promise to watch anime and read romance books with you late at night📖😴, and I promise to put ur needs FIRST🫠🍫. I'll make sure you get the Dogs you want bae😘🐾";
+            gif.src = happyGif;
+        }
+    });
+</script>
+
 </body>
 </html>
